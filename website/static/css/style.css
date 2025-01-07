@@ -1,0 +1,33 @@
+.register{
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 500px;
+    height: 600px;
+    background-color: red;
+    padding: 20px 50px 20px  50px;
+    border-radius: 30px;
+}
+/* Every form will involve a label and input */
+
+
+label{
+    display: block;
+}
+label{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+
+.submit{
+    justify-content: center;
+    margin-left: 11rem;
+    margin-top: 5%;
+    background-color: #04AA6D;
+    border-radius: 10px;
+    color: aliceblue;
+}

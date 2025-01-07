@@ -9,6 +9,7 @@ class Register(forms.Form):
     )
     name = forms.CharField(max_length=200)
     email = forms.CharField(max_length=400)
+    # Use of widgets is very important when it comes down to the design and will alow you to function with less js
     account = forms.ChoiceField(choices=account_type, widget=forms.RadioSelect())
     password = forms.CharField(max_length=200)
     # calendar (IMPORTANT)
