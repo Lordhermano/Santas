@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'website',
     'crispy_forms',
-    'crispy_bootstrap4',
+    'crispy_bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +126,4 @@ STATICFILES_DIRS = [BASE_DIR / 'website/static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+AUTH_USER_MODEL = "website.Createaccount"

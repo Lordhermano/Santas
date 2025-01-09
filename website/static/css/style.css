@@ -5,12 +5,22 @@
     margin-bottom: 100px;
     width: 500px;
     height: 600px;
-    background-color: red;
+    background-color: #CBDCCB;
     padding: 20px 50px 20px  50px;
     border-radius: 30px;
 }
 /* Every form will involve a label and input */
-
+.Login{
+    justify-content: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 500px;
+    height: 600px;
+    background-color: red;
+    padding: 20px 50px 20px  50px;
+    border-radius: 30px;
+}
 
 label{
     display: block;
