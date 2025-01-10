@@ -1,10 +1,13 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+# for logging in and out
+from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import Register,Login
 from .models import Createaccount
 # Create your views here.
+@login_required(login_url="login")
 def home(request):
    return render(request, 'base.html')
 
@@ -41,15 +44,21 @@ def login_page(request):
             username = request.POST.get('email','')
             password = request.POST.get('password','')
             user = authenticate(request,username=username,password=password )
+            print(user)
             if user is not None:
                login(request,user)  
                return redirect('home')
             else:
-               messages.info(request,'Username or Password is incorrect') 
-      else:
-          print('sry')         
+              messages.info(request,'Username or Password is incorrect')
+              context = {'form':Login()}
+              return render(request,'login.html',context)    
+
+      else:  
+          return redirect('home')    
    else:      
       context = {'form':Login()}
       return render(request,'login.html',context)         
-   
+def logout(request):
+      auth.logout(request)
+      return redirect('login')
 
