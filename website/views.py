@@ -7,26 +7,18 @@ from django.contrib import messages
 from .forms import Register,Login
 from .models import Createaccount
 # Create your views here.
-@login_required(login_url="login")
+
 def home(request):
    return render(request, 'base.html')
 
 
 def register(request):
-   
+   form = Register()
    if request.method == 'POST':
-      form = Register(request.POST)
+      form = Register(data=request.POST)
       if form.is_valid():
-         name = request.POST.get('name','')
-         email = request.POST.get('email','')
-
-         # account = request.POST.get('Account','')
-         accountchoice = request.POST.get('account','')
-         account = dict(Register.account_type).get(int(accountchoice))
-         password = request.POST.get('password','')
-         date_of_birth = request.POST.get('date_of_birth','')
-         acc_obj = Createaccount(name=name,email=email,account=account,password=password,date_of_birth=date_of_birth)
-         acc_obj.save()
+         form.save()
+         name = request.POST.get('name')
          messages.success(request,f"Account created for {name}")
          context = {'form':form}      
          return redirect('login')
@@ -39,10 +31,10 @@ def register(request):
    
 def login_page(request):
    if request.method == 'POST':
-      form = Login(request.POST)
+      form = Login(request,data=request.POST)
       if form.is_valid():
-            username = request.POST.get('email','')
-            password = request.POST.get('password','')
+            username = request.POST.get('username')
+            password = request.POST.get('password')
             user = authenticate(request,username=username,password=password )
             print(user)
             if user is not None:
@@ -54,7 +46,9 @@ def login_page(request):
               return render(request,'login.html',context)    
 
       else:  
-          return redirect('home')    
+         messages.info(request,'Username or Password is incorrect')
+         context = {'form':Login()}
+         return render(request,'login.html',context)    
    else:      
       context = {'form':Login()}
       return render(request,'login.html',context)         

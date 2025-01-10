@@ -23,9 +23,15 @@ class CustomUserManager(BaseUserManager):
 
 
 class Createaccount(AbstractBaseUser,PermissionsMixin):
+
+    choice = [
+         ('Standard','Standard'),
+         ('Premium','Premium'),
+         ('VIP','VIP')
+    ]
     name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
-    account = models.CharField(max_length=200)
+    account = models.CharField(max_length=200,choices=choice,default='Standard')
     password = models.CharField(max_length=200)
     date_of_birth = models.DateField(max_length=200)
 
@@ -39,7 +45,8 @@ class Createaccount(AbstractBaseUser,PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name','password', 'account', 'date_of_birth']
+    PASSWORD_FIELD = 'password'
+    REQUIRED_FIELDS = ['name', 'account', 'date_of_birth']
 
     # Making it presentable
     class Meta:

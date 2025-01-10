@@ -4,7 +4,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
     width: 500px;
-    height: 600px;
+    min-height: 600px;
     background-color: #CBDCCB;
     padding: 20px 50px 20px  50px;
     border-radius: 30px;
