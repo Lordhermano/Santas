@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from .forms import Register,Login
 from .models import Createaccount
 # Create your views here.
@@ -21,8 +22,9 @@ def register(request):
          date_of_birth = request.POST.get('date_of_birth','')
          acc_obj = Createaccount(name=name,email=email,account=account,password=password,date_of_birth=date_of_birth)
          acc_obj.save()
+         messages.success(request,f"Account created for {name}")
          context = {'form':form}      
-         return redirect('home')
+         return redirect('login')
       else:
             # If form is invalid, re-render the form with errors
             return render(request, "register.html", {"form": form})

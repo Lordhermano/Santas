@@ -5,6 +5,9 @@
     <div class="Login">
         {% csrf_token %}
         {% crispy form %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
         <input type="submit" name="Login" value="Login">
     </div>
 </form>
