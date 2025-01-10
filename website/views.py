@@ -56,3 +56,6 @@ def logout(request):
       auth.logout(request)
       return redirect('login')
 
+def display_cards(request):
+    return render(request,'cards.html')
+

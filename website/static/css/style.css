@@ -1,5 +1,28 @@
+body{
+    background-image: url("../images/the-christmas-tree.jpg");
+    background-repeat: no-repeat;
+    background-image: -moz-linear-gradient();
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+
+
+}
+
+.backdrop{
+    background-color: aliceblue;
+    margin: 0px;
+    position: absolute;
+    left: 0px ;
+    top: 210px;    
+    width: 100vw;
+    height: 70vh;
+    bottom: 100px;
+    color: aliceblue;
+    
+}
 .register{
-    justify-content: center;
     margin: auto;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -8,6 +31,14 @@
     background-color: #CBDCCB;
     padding: 20px 50px 20px  50px;
     border-radius: 30px;
+}
+.auth_login{
+    position: absolute;
+    right:100px;
+}
+.auth_reg{
+    position: absolute;
+    right:150px;
 }
 /* Every form will involve a label and input */
 .Login{

@@ -12,12 +12,17 @@
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
             {% else %}
+            <div class="auth_login">
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
+            </div>   
+            <div class="auth_reg">    
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Register</a>
                 </li>
+            </div>    
+             
             {% endif %}
                 
             </ul>
