@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-{% csrf_token %}
+
 <form action="" method="post">
     <div class="register">
-    
+        {% csrf_token %}
     {% crispy form %}
     <input class="submit" type="submit" value="Submit">
     </div>
