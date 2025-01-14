@@ -9,7 +9,7 @@ from .models import Createaccount
 # Create your views here.
 
 def home(request):
-   return render(request, 'base.html')
+   return render(request, 'page/base.html')
 
 
 def register(request):
@@ -27,7 +27,7 @@ def register(request):
             return render(request, "register.html", {"form": form})
    else:
       context = {'form':Register()}      
-      return render(request,'register.html',context=context)
+      return render(request,'page/register.html',context=context)
    
 def login_page(request):
    if request.method == 'POST':
@@ -43,19 +43,22 @@ def login_page(request):
             else:
               messages.info(request,'Username or Password is incorrect')
               context = {'form':Login()}
-              return render(request,'login.html',context)    
+              return render(request,'page/login.html',context)    
 
       else:  
          messages.info(request,'Username or Password is incorrect')
          context = {'form':Login()}
-         return render(request,'login.html',context)    
+         return render(request,'page/login.html',context)    
    else:      
       context = {'form':Login()}
-      return render(request,'login.html',context)         
+      return render(request,'page/login.html',context)         
 def logout(request):
       auth.logout(request)
       return redirect('login')
 
 def display_cards(request):
-    return render(request,'cards.html')
+    return render(request,'page/poker.html')
 
+@login_required
+def book(request):
+    return render(request,'page/bookings.html')

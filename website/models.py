@@ -56,3 +56,5 @@ class Createaccount(AbstractBaseUser,PermissionsMixin):
             return self.name
     def get_short_name(self):
             return self.name or self.email.split('@')[0]
+class Trips(models.Model):
+    title = models.CharField(max_length=200)
