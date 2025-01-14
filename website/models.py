@@ -58,3 +58,6 @@ class Createaccount(AbstractBaseUser,PermissionsMixin):
             return self.name or self.email.split('@')[0]
 class Trips(models.Model):
     title = models.CharField(max_length=200)
+    item_des = models.CharField(max_length=100)
+    item_price = models.FloatField(max_length=100)
+              

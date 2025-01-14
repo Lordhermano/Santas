@@ -16,3 +16,9 @@ class Login(AuthenticationForm):
     username =  forms.CharField(widget=forms.TextInput())
     password =  forms.CharField(widget=forms.PasswordInput())
         
+
+class Bookings(forms.Form):
+
+    adult = forms.IntegerField(min_value=0)
+    childern = forms.IntegerField(min_value=0)
+    infants = forms.IntegerField(min_value=0)

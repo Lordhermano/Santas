@@ -36,6 +36,13 @@ body{
     color: aliceblue;
     
 }
+label.Adult {
+    width: 20vw;
+}
+
+input{
+    width: 20vw;
+}
 
 .lapland{
     position: absolute;

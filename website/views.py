@@ -4,7 +4,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import Register,Login
+from .forms import Register,Login,Bookings
 from .models import Createaccount
 # Create your views here.
 
@@ -61,4 +61,5 @@ def display_cards(request):
 
 @login_required
 def book(request):
-    return render(request,'page/bookings.html')
+    context = {'form':Bookings()}
+    return render(request,'page/bookings.html',context)
