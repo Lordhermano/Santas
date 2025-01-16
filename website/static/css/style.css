@@ -3,7 +3,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.ticketoverlay .pricing{
+    position: absolute;
+    z-index: 1;
+    min-height: max-content;
+    min-width: max-content;
+    left: 180px;
+    top: 340px;
+}
 body{
     background-image: url("../images/the-christmas-tree.jpg");
     background-repeat: no-repeat;

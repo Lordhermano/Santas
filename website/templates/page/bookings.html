@@ -1,8 +1,25 @@
 {% extends 'page/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+
 
 {% block content %}
+    {% for dest in trip %}
+        {% if dest.id == product %}
+        <h1 style="color: cadetblue;">{{dest.name}}</h1>
+        <img src="{{dest.img}}" alt="">
 
+        <div class="ticketoverlay">
+            <img src="{% static 'images/ticket.png' %}" alt="" style="height: 200px; width: 250px; ">
+        <div class="pricing">
+            <p class="lead">Adult Prices : £{{dest.adult_price}}</p>
+            <p class="lead">Child Prices : £{{dest.child_price}}</p>
+            <p class="lead">Infant Prices : £{{dest.infant_price}}</p>
+        </div>    
+        </div>    
+        {% endif %}
+     
+    {% endfor %}    
 <div class="intchoice">
 {% csrf_token %}
 {% crispy form %}

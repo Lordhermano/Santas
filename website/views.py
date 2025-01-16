@@ -65,5 +65,8 @@ def display_cards(request):
 
 @login_required(login_url='login')
 def book(request):
-    context = {'form':Bookings()}
+    id = request.POST.get('interface')
+    id = int(id)
+    trips = Destination.objects.all()
+    context = {'form':Bookings(),'trip':trips,'product':id}
     return render(request,'page/bookings.html',context)
