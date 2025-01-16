@@ -5,11 +5,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import Register,Login,Bookings
-from .models import Createaccount
+from .models import Createaccount,Destination
 # Create your views here.
 
 def home(request):
    return render(request, 'page/base.html')
+
 
 
 def register(request):
@@ -57,9 +58,12 @@ def logout(request):
       return redirect('login')
 
 def display_cards(request):
-    return render(request,'page/poker.html')
+      dests = Destination.objects.all()
 
-@login_required
+      return render(request,'page/poker.html',{'dest1':dests})
+ 
+
+@login_required(login_url='login')
 def book(request):
     context = {'form':Bookings()}
     return render(request,'page/bookings.html',context)

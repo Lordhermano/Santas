@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<div class="intchoice">
+{% csrf_token %}
 {% crispy form %}
-
+</div>
 {% endblock %}

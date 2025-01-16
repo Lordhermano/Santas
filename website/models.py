@@ -61,3 +61,11 @@ class Trips(models.Model):
     item_des = models.CharField(max_length=100)
     item_price = models.FloatField(max_length=100)
               
+class Destination(models.Model):
+
+     name = models.CharField(max_length=200)
+     img = models.ImageField(upload_to="images")
+     desc = models.TextField()
+     adult_price = models.IntegerField()
+     child_price = models.IntegerField()
+     infant_price = models.IntegerField()          

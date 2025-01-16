@@ -1,31 +1,28 @@
 {% extends 'page/base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="backdrop">
   <div class="container">
   
   <div class="row">
+        {% for dests in dest1 %}
         <div class="column">
-            <div class="card h-100" style="padding-left: 10px; padding-inline: 10px;"><h1>Santas Lapland</h1>
+            <div class="card h-200" style="padding-left: 10px; padding-inline: 10px; height: 500px;"><h1>{{dests.name}}</h1>
+              <img src="{{dests.img.url}}" class="center" alt="" style="width: 200px; height: 200px; ">
               <hr>
-              <p>The Lapland has all the wonders that your child could explore the ringing bells and christmas gems. Visit us to get the christmas spirits</p>
-              <a href="{% url 'book' %}" class="btn btn-primary">Book</a>
+              <p>{{dests.desc}}</p>
+              <form action='book' method="post">
+                {% csrf_token %}
+                <input type="text" name="interface" value="{{dests.id}}" hidden>
+                <input type="submit" class="btn btn-primary" name="Book" value='Book'>
+              </form>
             </div>
         </div>
-        <div class="column">
-          <div class="card h-100" style="padding-left: 10px; padding-inline: 10px;"> <h1>Santas WorkShop</h1><hr>
-            <a href="{% url 'book' %}" class="btn btn-primary">Book</a>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card h-100" style="padding-left: 10px; padding-inline: 10px;">  <h1>Reindeer Trip</h1><hr>
-            <a href="{% url 'book' %}" class="btn btn-primary">Book</a>
-          </div>
-          </div>
+        {% endfor %}
     </div>
-  </div>  
+    </div> 
 
-</div>
 </div>
 
 {% endblock %}  

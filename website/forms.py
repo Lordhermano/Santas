@@ -22,3 +22,4 @@ class Bookings(forms.Form):
     adult = forms.IntegerField(min_value=0)
     childern = forms.IntegerField(min_value=0)
     infants = forms.IntegerField(min_value=0)
+
