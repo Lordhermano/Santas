@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 # for logging in and out
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login
@@ -6,10 +6,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import Register,Login,Bookings
 from .models import Createaccount,Destination
+
+import requests,datetime
+
+
 # Create your views here.
 
 def home(request):
    return render(request, 'page/base.html')
+
 
 
 
@@ -37,7 +42,6 @@ def login_page(request):
             username = request.POST.get('username')
             password = request.POST.get('password')
             user = authenticate(request,username=username,password=password )
-            print(user)
             if user is not None:
                login(request,user)  
                return redirect('home')
@@ -58,9 +62,21 @@ def logout(request):
       return redirect('login')
 
 def display_cards(request):
+      weather_data = requests.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/lapland?unitGroup=metric&include=alerts%2Cdays%2Ccurrent%2Cevents&key=QKKH9TLSTCHQNM95E2N2G2NEH&contentType=json").json()
+   
+      daily_data = []
+      for i in range(5):
+         data = {
+         'day': datetime.datetime.strptime(weather_data['days'][i]['datetime'],"%Y-%m-%d").date(),
+         'avg_temp' : weather_data['days'][i]['temp'],
+         'feels_like' : weather_data['days'][i]['feelslikemax'],
+         'icon' : weather_data['days'][i]['icon']
+            }
+         daily_data.append(data)
       dests = Destination.objects.all()
 
-      return render(request,'page/poker.html',{'dest1':dests})
+
+      return render(request,'page/poker.html',{'dest1':dests,'data':daily_data})
  
 
 @login_required(login_url='login')

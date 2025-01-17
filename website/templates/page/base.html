@@ -10,13 +10,18 @@
     <title>Santas Land</title>
 </head>
 <body>
-    
    {% include 'page/nav_bar.html' %} 
-    <div class="container">
+   {% block weather %}
+   {% endblock %} 
+
         {% block content %}
         {% endblock %}   
-    </div>
-     
+        <div class="footer mt-5 bg-primary" >
+            <a href="nav-link">Terms and Conditions</a>
+        </div>    
+
+      
 </body>
+
 <script src="{% static 'js/bootstrap.js' %}"></script>
 </html>

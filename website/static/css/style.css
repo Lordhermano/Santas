@@ -3,14 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-.ticketoverlay .pricing{
-    position: absolute;
-    z-index: 1;
-    min-height: max-content;
-    min-width: max-content;
-    left: 180px;
-    top: 340px;
-}
+
 body{
     background-image: url("../images/the-christmas-tree.jpg");
     background-repeat: no-repeat;
@@ -34,24 +27,16 @@ body{
     width: 50%;
 }
 
-.row .column{
-    float: left;
-    display: block;
-    width: 33.33%;
-    padding: 10px 10px 10px 10px;
-    height: 400px; 
+.col{
+    width: 100%;
+   
 }
 
 .backdrop{
     background-color: aliceblue;
     margin: 0px;
-    position: absolute;
-    top: 210px; 
-    left: 0px;   
-    right: 0px;
-    width: 100%;
-    height: 70vh;
-    bottom: 100px;
+    width: 100vw;
+    min-height: 600px;
     color: aliceblue;
     
 }
@@ -127,4 +112,29 @@ label{
     position: absolute;
     left:45%;
     top:90%;
+}
+
+
+/* Booking page  */
+.pricing{
+    position: relative;
+    background-image: url( '../images/ticket.png');
+    background-repeat: no-repeat;
+    background-size: 50%;
+    margin-top: 20px;
+    padding: 20px;
+    height: 200px;
+    width: 400px;    
+}
+.wcontent{
+    width:20%;
+}
+img.weather_icons{
+    width: 80px;
+    height: 80px;
+}
+.center{
+    justify-items: center;
+    margin-left: 0px;
+    margin-right: 0px ;
 }
