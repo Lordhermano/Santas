@@ -11,9 +11,13 @@ body{
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    overflow-x: hidden;
 
 
 
+}
+.row{
+    width: 100vw;
 }
 .intchoice{
 
@@ -35,7 +39,7 @@ body{
 .backdrop{
     background-color: aliceblue;
     margin: 0px;
-    width: 100vw;
+    max-width: 100vw;
     min-height: 600px;
     color: aliceblue;
     
@@ -127,7 +131,7 @@ label{
     width: 400px;    
 }
 .wcontent{
-    width:20%;
+    width:380px;
 }
 img.weather_icons{
     width: 80px;
@@ -135,6 +139,7 @@ img.weather_icons{
 }
 .center{
     justify-items: center;
+    width: 50%;
     margin-left: 0px;
     margin-right: 0px ;
 }

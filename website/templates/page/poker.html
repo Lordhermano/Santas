@@ -2,7 +2,8 @@
 {% load crispy_forms_tags %}
 
 {% block weather %}
-<div class="d-flex justify-content-center"  >
+<div class="d-flex justify-content-center"   >
+
   {% for daily in data %}
   <div class="card h-100 mx-2 flex-sm-fill wcontent">
       <p class="center">{{daily.day}}</p>
@@ -12,6 +13,7 @@
       
   </div> 
   {% endfor %}    
+
 </div>
 {% endblock %}
 
@@ -21,13 +23,13 @@
 
 {% block content %}
 
-<div class="backdrop">
-  <div class="container">
+<div class="backdrop d-flex">
+
   
   <div class="row">
         {% for dests in dest1 %}
         <div class="col">
-            <div class="card h-100 p-5"><h1>{{dests.name}}</h1>
+            <div class="card h-100 p-5 justify-content-center wcontent"><h1>{{dests.name}}</h1>
               <img src="{{dests.img.url}}" class="center" alt="" style="width: 200px; height: 200px; ">
               <hr>
               <p>{{dests.desc}}</p>
@@ -40,7 +42,6 @@
         </div>
         {% endfor %}
     </div>
-    </div> 
 
 </div>
 
