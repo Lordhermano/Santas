@@ -1,0 +1,24 @@
+START
+    # User Inputs
+    RECEIVE Email FROM (String) POST
+    RECEIVE Password FROM (String) POST
+
+    # User Database
+
+    READ db.sqlite3 Database
+    # Checking each email
+    FOR Emails in Database.Email_Feild DO
+        IF Email <> Emails:
+            SEND ERROR "Username or Password incorrect" TO DISPLAY
+        ELSEIF
+            SET Index TO INDEX(Emails)
+            # Checking only the valid password
+            IF Database.Password_Feild[Index] == Password THEN
+                LOGIN(Email,Password)
+                RETURN REDIRECT('Booking.html')
+            ELSE
+                SEND ERROR "Username or Password incorrect" TO DISPLAY
+            ENDIF
+        ENDIF
+    ENDFOR
+END                

@@ -1,0 +1,17 @@
+START
+    # Inputs
+    RECEIVE Name FROM (String) POST
+    RECEIVE Email FROM (String) POST
+    RECEIVE Password FROM (String) POST
+    RECEIVE Date_of_birth FROM (Datetime) POST
+    
+    # Conditions
+    IF LENGTH(Password) < 8:
+        RETURN ERROR TO PAGE 'Invalid password too short' 
+    ENDIF
+
+    IF Date_of_birth < Datetime.Date.now() THEN
+        RETURN ERROR 'Invaild Date of birth must be before current date'
+    ENDIF
+
+END
